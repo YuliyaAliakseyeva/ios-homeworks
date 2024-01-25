@@ -1,0 +1,70 @@
+//
+//  InfoViewController.swift
+//  Navigation
+//
+//  Created by Yuliya Vodneva on 24.01.24.
+//
+
+import UIKit
+
+class InfoViewController: UIViewController {
+    
+    private lazy var alertButton: UIButton = {
+        
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Оповещение", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        
+        return button
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .systemOrange
+        
+        view.addSubview(alertButton)
+        
+        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            alertButton.leadingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
+                constant: 15
+            ),
+            alertButton.trailingAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
+                constant: -15
+            ),
+            alertButton.centerYAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.centerYAnchor
+            ),
+            alertButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        
+        alertButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "Справка", message: "Сохранить в избранное?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: .default))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default))
+        
+        alert.modalTransitionStyle = .flipHorizontal
+        alert.modalPresentationStyle = .pageSheet
+        
+        present(alert, animated: true)
+    
+        
+  //      self.navigationController?.pushViewController(alert, animated: true)
+        
+
+    }
+    
+
+   
+
+}
