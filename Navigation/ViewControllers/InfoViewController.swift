@@ -50,19 +50,19 @@ class InfoViewController: UIViewController {
         
         let alert = UIAlertController(title: "Справка", message: "Сохранить в избранное?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Да", style: .default))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default))
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: {action in print("Пост сохранен в избранное")
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: {action in print("Пост не сохранен в избранное")
+        }))
         
         alert.modalTransitionStyle = .flipHorizontal
         alert.modalPresentationStyle = .pageSheet
         
         present(alert, animated: true)
     
-        
-  //      self.navigationController?.pushViewController(alert, animated: true)
-        
-
     }
+    
+    
     
 
    
