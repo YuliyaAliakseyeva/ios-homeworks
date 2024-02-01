@@ -10,7 +10,6 @@ import UIKit
 class InfoViewController: UIViewController {
     
     private lazy var alertButton: UIButton = {
-        
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Оповещение", for: .normal)
@@ -25,7 +24,12 @@ class InfoViewController: UIViewController {
         view.backgroundColor = .systemOrange
         
         view.addSubview(alertButton)
+        setupConstrains()
         
+        alertButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
+    }
+    
+    private func setupConstrains() {
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             alertButton.leadingAnchor.constraint(
@@ -41,9 +45,6 @@ class InfoViewController: UIViewController {
             ),
             alertButton.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
-        
-        alertButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }
     
     @objc func buttonPressed(_ sender: UIButton) {
@@ -59,7 +60,6 @@ class InfoViewController: UIViewController {
         alert.modalPresentationStyle = .pageSheet
         
         present(alert, animated: true)
-    
     }
     
     

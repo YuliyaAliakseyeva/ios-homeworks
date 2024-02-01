@@ -11,8 +11,6 @@ class PostViewController: UIViewController {
     
     var titlePost: String = "None"
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,17 +21,12 @@ class PostViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = infoBarButton
     }
+    
         @objc func pressedButton () {
             let infoViewController = InfoViewController()
             
             infoViewController.modalTransitionStyle = .coverVertical
             infoViewController.modalPresentationStyle = .pageSheet
             present(infoViewController, animated: true)
-            
-        
     }
-    
-
-   
-
 }
