@@ -21,12 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
         let feedViewController = FeedViewController()
-        let profileViewController = ProfileViewController()
+        let logInViewController = LogInViewController()
+//        let profileViewController = ProfileViewController()
         
         let feedNavigationController = UINavigationController(rootViewController: feedViewController)
-        let profileNavigationController = UINavigationController(rootViewController: profileViewController)
+        let profileNavigationController = UINavigationController(rootViewController: logInViewController)
         
-    
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
         
         feedNavigationController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "text.justify"), tag: 0)
