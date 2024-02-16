@@ -10,7 +10,7 @@ import UIKit
 class LogInViewController: UIViewController {
     
     private lazy var logInScrollView: UIScrollView = {
-       let scrollView = UIScrollView()
+        let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var contentView: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         
@@ -47,13 +47,11 @@ class LogInViewController: UIViewController {
     }()
     
     private lazy var lineBorder: UIView = {
-       let line = UIView()
+        let line = UIView()
         line.backgroundColor = .lightGray
         line.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         return line
-        
-        
     }()
     
     private lazy var logInStackView: UIStackView = {
@@ -72,7 +70,7 @@ class LogInViewController: UIViewController {
         
         return stack
     }()
-
+    
     class CustomButton: UIButton {
         override var isHighlighted: Bool {
             didSet {
@@ -101,7 +99,6 @@ class LogInViewController: UIViewController {
         
     }()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -109,8 +106,6 @@ class LogInViewController: UIViewController {
         addSubviews()
         setupConstrains()
         setupSubviews()
-        
-        logInBotton.addTarget(self, action: #selector(buttonLogInPressed(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,48 +138,99 @@ class LogInViewController: UIViewController {
         let safeAreaGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            logInScrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
-            logInScrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
-            logInScrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
-            logInScrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: logInScrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: logInScrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: logInScrollView.trailingAnchor),
-            contentView.widthAnchor.constraint(equalTo: logInScrollView.widthAnchor)
-        
-        ])
-        
-        NSLayoutConstraint.activate([
-            logoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
-            logoImage.widthAnchor.constraint(equalToConstant: 100),
-            logoImage.heightAnchor.constraint(equalToConstant: 100),
-            logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            logInStackView.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
-            logInStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            logInStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            logInStackView.heightAnchor.constraint(equalToConstant: 100),
-            emailTextField.widthAnchor.constraint(equalTo: logInStackView.widthAnchor),
-            lineBorder.widthAnchor.constraint(equalTo: logInStackView.widthAnchor),
-            lineBorder.heightAnchor.constraint(equalToConstant: 0.5),
-            passwordTextField.widthAnchor.constraint(equalTo: logInStackView.widthAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            logInBotton.topAnchor.constraint(equalTo: logInStackView.bottomAnchor, constant: 16),
-            logInBotton.heightAnchor.constraint(equalToConstant: 50),
-            logInBotton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            logInBotton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            logInBotton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -(120+100+120+100+16+50))
-        
+            logInScrollView.topAnchor.constraint(
+                equalTo: safeAreaGuide.topAnchor
+            ),
+            logInScrollView.bottomAnchor.constraint(
+                equalTo: safeAreaGuide.bottomAnchor
+            ),
+            logInScrollView.leadingAnchor.constraint(
+                equalTo: safeAreaGuide.leadingAnchor
+            ),
+            logInScrollView.trailingAnchor.constraint(
+                equalTo: safeAreaGuide.trailingAnchor
+            ),
+            
+            contentView.topAnchor.constraint(
+                equalTo: logInScrollView.topAnchor
+            ),
+            contentView.leadingAnchor.constraint(
+                equalTo: logInScrollView.leadingAnchor
+            ),
+            contentView.trailingAnchor.constraint(
+                equalTo: logInScrollView.trailingAnchor
+            ),
+            contentView.widthAnchor.constraint(
+                equalTo: logInScrollView.widthAnchor
+            ),
+            
+            logoImage.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: 120
+            ),
+            logoImage.widthAnchor.constraint(
+                equalToConstant: 100
+            ),
+            logoImage.heightAnchor.constraint(
+                equalToConstant: 100
+            ),
+            logoImage.centerXAnchor.constraint(
+                equalTo: contentView.centerXAnchor
+            ),
+            
+            logInStackView.topAnchor.constraint(
+                equalTo: logoImage.bottomAnchor,
+                constant: 120
+            ),
+            logInStackView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: 16
+            ),
+            logInStackView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor, 
+                constant: -16
+            ),
+            logInStackView.heightAnchor.constraint(
+                equalToConstant: 100
+            ),
+            
+            emailTextField.widthAnchor.constraint(
+                equalTo: logInStackView.widthAnchor
+            ),
+            
+            lineBorder.widthAnchor.constraint(
+                equalTo: logInStackView.widthAnchor
+            ),
+            lineBorder.heightAnchor.constraint(
+                equalToConstant: 0.5
+            ),
+            
+            passwordTextField.widthAnchor.constraint(
+                equalTo: logInStackView.widthAnchor
+            ),
+            
+            logInBotton.topAnchor.constraint(
+                equalTo: logInStackView.bottomAnchor,
+                constant: 16
+            ),
+            logInBotton.heightAnchor.constraint(
+                equalToConstant: 50
+            ),
+            logInBotton.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: 16
+            ),
+            logInBotton.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: -16
+            ),
+            logInBotton.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: -(120+100+120+100+16+50)
+            )
         ])
     }
-
+    
     func setupSubviews() {
         
         emailTextField.backgroundColor = .systemGray6
@@ -219,8 +265,7 @@ class LogInViewController: UIViewController {
         logInBotton.tintColor = .white
         logInBotton.clipsToBounds = true
         logInBotton.layer.cornerRadius = 10
-        
-        
+        logInBotton.addTarget(self, action: #selector(buttonLogInPressed(_:)), for: .touchUpInside)
     }
     
     @objc func buttonLogInPressed(_ sender: UIButton) {
@@ -234,17 +279,17 @@ class LogInViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         
         notificationCenter.addObserver(
-        self,
-        selector: #selector(self.willShowKeaboard(_:)),
-        name: UIResponder.keyboardWillShowNotification,
-        object: nil
+            self,
+            selector: #selector(self.willShowKeaboard(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
         )
         
         notificationCenter.addObserver(
-        self,
-        selector: #selector(self.willHideKeaboard(_:)),
-        name: UIResponder.keyboardWillHideNotification,
-        object: nil
+            self,
+            selector: #selector(self.willHideKeaboard(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
         )
     }
     
