@@ -23,7 +23,7 @@ class FeedViewController: UIViewController {
         let button = UIButton(configuration: .filled(), primaryAction: nil)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Перейти к посту 2", for: .normal)
-        
+
         return button
     }()
     
@@ -55,8 +55,6 @@ class FeedViewController: UIViewController {
         
         firstPostButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
         secondPostButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-        
-        
     }
         
     private func setupConstrains() {
