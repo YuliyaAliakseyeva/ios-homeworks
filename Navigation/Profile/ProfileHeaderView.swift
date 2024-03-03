@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ProfileHeaderView: UITableViewHeaderFooterView {
+class ProfileHeaderView: UIView {
     
-    static let id = "ProfileHeaderView"
+//    static let id = "ProfileHeaderView"
     
     lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Avatar"))
@@ -57,9 +57,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private var statusText: String = ""
     
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
         addSubviews()
         setupConstrains()
@@ -70,27 +69,40 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override init(reuseIdentifier: String?) {
+//        super.init(reuseIdentifier: reuseIdentifier)
+//        
+//        setupView()
+//        addSubviews()
+//        setupConstrains()
+//        layoutSubviews()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     func setupView() {
-        contentView.backgroundColor = .lightGray
+        self.backgroundColor = .systemGray6
     }
     
     func addSubviews() {
-        contentView.addSubview(avatarImageView)
-        contentView.addSubview(fullNameLabel)
-        contentView.addSubview(statusLabel)
-        contentView.addSubview(setStatusButton)
-        contentView.addSubview(statusTextField)
+        self.addSubview(avatarImageView)
+        self.addSubview(fullNameLabel)
+        self.addSubview(statusLabel)
+        self.addSubview(setStatusButton)
+        self.addSubview(statusTextField)
     }
     
     private func setupConstrains() {
 //        let safeAreaLayoutGuide = contentView.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             self.avatarImageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor,
+                equalTo: safeAreaLayoutGuide.topAnchor,
                 constant: 16
             ),
             self.avatarImageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
                 constant: 16
             ),
             self.avatarImageView.heightAnchor.constraint(
@@ -101,7 +113,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             ),
             
             self.fullNameLabel.topAnchor.constraint(
-                equalTo: contentView.topAnchor,
+                equalTo: safeAreaLayoutGuide.topAnchor,
                 constant: 27
             ),
             self.fullNameLabel.leadingAnchor.constraint(
@@ -109,7 +121,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 constant: 16
             ),
             self.fullNameLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -16
             ),
             self.fullNameLabel.heightAnchor.constraint(
@@ -121,11 +133,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 constant: 25
             ),
             self.setStatusButton.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
+                equalTo: safeAreaLayoutGuide.leadingAnchor,
                 constant: 16
             ),
             self.setStatusButton.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -16
             ),
             self.setStatusButton.heightAnchor.constraint(
@@ -155,7 +167,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
                 constant: 16
             ),
             self.statusLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
+                equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -16
             ),
             self.statusLabel.heightAnchor.constraint(
