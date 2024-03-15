@@ -37,12 +37,14 @@ class LogInViewController: UIViewController {
     private lazy var emailTextField: UITextField = {
         let email = UITextField(frame: .infinite)
         email.translatesAutoresizingMaskIntoConstraints = false
+        email.delegate = self
         return email
     }()
     
     private lazy var passwordTextField: UITextField = {
         let password = UITextField(frame: .infinite)
         password.translatesAutoresizingMaskIntoConstraints = false
+        password.delegate = self
         return password
     }()
     
@@ -70,27 +72,6 @@ class LogInViewController: UIViewController {
         
         return stack
     }()
-    
-    class CustomButton: UIButton {
-        override var isHighlighted: Bool {
-            didSet {
-                if (isHighlighted) {
-                    alpha = 0.8
-                } else {
-                    alpha = 1
-                }
-            }
-        }
-        override var isSelected: Bool {
-            didSet {
-                if (isSelected) {
-                    alpha = 0.8
-                } else {
-                    alpha = 1
-                }
-            }
-        }
-    }
     
     private lazy var logInBotton: CustomButton = {
         let botton = CustomButton()
@@ -300,11 +281,22 @@ class LogInViewController: UIViewController {
     
     @objc func willShowKeaboard(_ notification: NSNotification) {
         let keaboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
-        logInScrollView.contentInset.bottom += keaboardHeight ?? 0.0
+        logInScrollView.contentInset.bottom = keaboardHeight ?? 0.0
     }
     
     @objc func willHideKeaboard(_ notification: NSNotification) {
         logInScrollView.contentInset.bottom = 0.0
     }
     
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(
+        _ textField: UITextField
+    ) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }
